@@ -1,0 +1,2 @@
+psFile		"|lpr"
+urlCommand      "seamonkey %s"

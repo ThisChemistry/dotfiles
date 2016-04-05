@@ -1,0 +1,21 @@
+*ttyModes: erase ^H
+*vt100.translations: #override \
+		     <Key>Home:	string("\033[1~") \n\
+		     <Key>End:	string("\033[4~")
+xterm*eightBitInput: false
+XTerm*eightBitInput: false
+xterm*background: black
+xterm*foreground: darkorange
+xterm*faceSize: 10
+xterm*faceName: terminal:style=bold
+Rxvt*eightBitInput: false
+Rxvt*background: black
+Rxvt*foreground: darkorange
+!Rxvt*faceSize: 12
+Rxvt*scrollBar: False
+Rxvt*font: xft:fixed:bold:size=10
+Rxvt*termName: vt102
+
+xpdf*initialZoom: width
+xpdf*Background: black
+*fileFilterStyle: filter_hidden_files
