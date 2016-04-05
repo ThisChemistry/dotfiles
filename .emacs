@@ -1,11 +1,4 @@
-;; Emacs configuration lisp on wapsi Rev. 2012-11-20
 ;; Emacs configuration lisp on wapsi Rev. 2015-04-15
-;;; Diaspora hack that accomplishes little
-(add-to-list 'auto-mode-alist
-             '("\\.dias\\'" . (lambda ()
-                               ;; add major mode setting here, if
-                               ;; needed, for example: (text-mode)
-                               (diaspora-mode))))
 
 ;;; Org-mode settings
 ;; Org-mode for Emacs provides text-only tools for keeping organized.
@@ -85,7 +78,6 @@
 ;; (require 'pymacs)
 ;; (pymacs-load "ropemacs" "rope-")
 
-
 (require 'ess-site)
 (add-to-list 'load-path "~/.emacs.d/haskell-mode")
 (require 'haskell-mode)
@@ -97,9 +89,6 @@
 (require 'twittering-mode)
 (setq twittering-use-master-password t)
 (add-hook 'twittering-edit-mode-hook 'flyspell-mode)
-;; (add-hook 'twittering-mode-hook (lambda ()
-;; 				  (twittering-other-user-timeline "jbarro")
-;; 				  ))
 
 (load-file "~/.emacs.d/graphviz-dot-mode.el")
 
@@ -110,44 +99,10 @@
 (add-hook 'markdown-mode-hook
 	  'flyspell-mode)
 
-;; (add-to-list 'load-path "~/.emacs.d/slime/")  ; your SLIME directory
-;; (setq inferior-lisp-program "/usr/bin/sbcl") ; your Lisp system
-;; (require 'slime)
-;; (slime-setup)
-
 ;;; Writing in LaTeX
 (add-hook 'tex-mode-hook 'turn-on-auto-fill)
 (add-hook 'bibtex-mode-hook 'turn-on-auto-fill)
 (add-hook 'tex-mode-hook 'flyspell-mode)
-
-;(setq outline-minor-mode t)
-
-;;; Posting to diaspora via diaspora.el
-(add-to-list 'load-path "~/.emacs.d/diaspora.el")
-(add-to-list 'load-path "~/.emacs.d/diaspora.el/libraries")
-(require 'diaspora)
-
-;; ;;; Writing with Muse
-;; (add-to-list 'load-path "~/.emacs.d/muse/lisp")
-;; (add-to-list 'load-path "~/.emacs.d/planner")
-;; (add-to-list 'load-path "~/.emacs.d/remember")
-
-;; (setq planner-project "WikiPlanner")
-;; (setq muse-project-alist
-;;       '(("WikiPlanner"
-;; 	 ("/home/derek/.emacs.d/plans"
-;; 	  :default "index"
-;; 	  :major-mode planner-mode
-;; 	  :visit-link planner-visit-link))
-;; 	("website"
-;; 	 ("/home/derek/.emacs.d/website"
-;; 	  :default "index"
-;; 	  (:base "html" :path "/home/derek/public_html/")
-;; 	  (:base "pdf" :path "/home/derek/public_html/pdf/"))
-;; 	 )))
-
-
-;; (require 'planner)
 
 ;;; Appearance
 (setq w3m-coding-system 'utf-8)		;; or 'utf-8
@@ -201,37 +156,13 @@
  '(ansi-color-for-comint-mode t)
  '(browse-url-browser-function (quote w3m))
  '(browse-url-temp-dir "/home/derek/.w3m")
- '(diaspora-get-always-authenticity-token nil)
- '(diaspora-password "8shitdotCOM")
- '(diaspora-secure-pod t)
- '(diaspora-sign-in-url "users/sign_in/")
- '(diaspora-single-message-url "posts/")
- '(diaspora-status-messages-url "status_messages/")
- '(diaspora-username "ThisChemistry")
- '(g-curl-debug t)
- '(g-user-email "f.stop.fitzgerald@gmail.com")
- '(g-xslt-debug t)
- '(g-xslt-program "/home/00/derekb/bin/xsltproc")
- '(gblogger-user-email "f.stop.fitzgerald@gmail.com")
  '(html-mode-hook (quote (turn-on-font-lock)))
  '(inhibit-startup-screen t)
- '(mail-host-address "sccs.swarthmore.edu")
- '(mail-user-agent (quote gnus-user-agent))
  '(markdown-command "markdown_py")
- '(muse-project-alist
-   (quote
-    (("WikiPlanner"
-      ("~/.emacs.d/plans" "index"))
-     ("website"
-      ("~/.emacs.d/website" "index")))))
  '(newsticker-url-list nil)
- '(smtpmail-default-smtp-server "smtp.sccs.swarthmore.edu" t)
- '(temporary-file-directory "/home/derek/tmp")
  '(text-mode-hook
    (quote
     (turn-on-auto-fill text-mode-hook-identify turn-on-font-lock)))
- '(user-full-name "Derek Andrew Bruzewicz")
- '(user-mail-address "derekb@.sccs.swarthmore.edu")
  '(w3m-cookie-accept-bad-cookies t)
  '(w3m-enable-google-feeling-lucky nil)
  '(w3m-home-page
@@ -264,56 +195,8 @@
      ("clusty" "http://clusty.com/search?query=%s" nil)
      ("ixquick" "http://ixquick.com/do/metasearch.pl?query=%s" nil))))
  '(w3m-toggle-inline-images-permanently nil)
- '(w3m-use-cookies t)
- '(weblogger-config-alist
-   (quote
-    (("default"
-      ("user" . "derekb")
-      ("server-url" . "http://www.sccs.swarthmore.edu/users/00/derekb/xparent/xmlrpc.php")
-      ("pass" . "OCIL8172")
-      ("weblog" . "1")))))
- '(weblogger-ping-urls nil)
- '(weblogger-save-password t)
- '(weblogger-server-url
-   "http://www.sccs.swarthmore.edu/users/00/derekb/xparent/xmlrpc.php"))
+ '(w3m-use-cookies t))
 
-
-;; ;; Make a new blog entry for the raos blog
-;; (defun gblogger-new-entry-raos ()
-;;   (interactive)
-;;   (gblogger-new-entry "http://www.blogger.com/feeds/23142240/posts/default"))
-
-;; (global-set-key "\M-n\M-r" 'gblogger-new-entry-raos)
-
-;; (defun gblogger-atom-display-raos ()
-;;   (interactive)
-;;   (gblogger-atom-display "http://www.blogger.com/feeds/23142240/posts/default"))
-
-;; (defun gblogger-edit-entry-num (num)
-;;   "Retrieve entry and prepare it for editting.
-;; The retrieved entry is placed in a buffer ready for editing.
-;; `num' is the URL of the entry."
-;;   (interactive
-;;    (list
-;;     (read-from-minibuffer "Entry Num:")))
-;;   (declare (special gblogger-auth-handle
-;;                     g-curl-program g-curl-common-options))
-;;   (let ((buffer (gblogger-get-entry (concat "http://www.blogger.com/feeds/23142240/posts/default/" num))))
-;;     (save-excursion
-;;       (set-buffer buffer)
-;;       (setq gblogger-publish-action 'gblogger-put-entry)
-;;       (g-xsl-transform-region (point-min) (point-max)
-;;                               g-atom-edit-filter))
-;;     (switch-to-buffer buffer)
-;;     (goto-char (point-min))
-;;     (flush-lines "^ *$")
-;;     (goto-char (point-min))
-;;     (search-forward "<content" nil t)
-;;     (forward-line 1)
-;;     (message
-;;      (substitute-command-keys "Use \\[gblogger-publish] to publish your edits ."))))
-
-;; (global-set-key "\M-n\M-p" 'weblogger-start-entry)
 (global-set-key [(hyper e)] 'bibtex-Article)
 
 (fset 'tex-new-choice-question
@@ -325,14 +208,9 @@
 (fset 'tex-new-figure
    [tab ?\\ ?i ?n ?c ?l ?u ?d ?e ?g ?r ?a ?p ?h ?i ?c ?s ?\[ ?w ?i ?d ?t ?h ?= ?\\ ?t ?e ?x ?t ?w ?i ?d ?t ?h ?\] ?\{ ?f ?i ?g ?u ?r ?e ?s ?/ ?\} ?\C-b])
 
-;; (fset 'tex-new-problem
-;;    [?\M-x ?t ?e ?x ?- ?n ?e ?w ?- ?f ?r ?a ?m backspace ?m ?e return ?P ?r ?o ?b ?l ?e ?m ?  ?\\ ?s ?t ?e ?p ?c ?o ?u ?n ?t ?e ?r ?\{ ?p ?r ?o ?b ?l ?e ?m ?\} ?\\ ?a ?r ?a ?b ?i ?c ?\{ ?p ?r ?o ?b ?l ?e ?m ?\} ?\C-e ?\C-j ?\C-c ?\C-o ?b ?l ?o ?c ?k return ?\C-p ?\C-e ?\{ ?\} ?\C-b])
-
 (fset 'tex-new-problem
    [?\\ ?s ?t ?e ?p ?c ?o ?u ?n ?t ?e ?r ?\{ ?p ?r ?o ?b ?l ?e ?m ?\} return ?\M-x ?t ?e ?x ?- ?n ?e ?w ?- ?f ?r ?a ?m ?e return ?P ?r ?o ?b ?l ?e ?m ?  ?\\ ?a ?r ?a ?b ?i ?c ?\{ ?p ?r ?o ?b ?l ?e ?m ?\} ?\C-e ?\C-j ?\C-c ?\C-o ?b ?l ?o ?c ?k return ?\C-p ?\C-e ?\{ ?\} ?\C-b])
 
 ;;; Start-up
-;;(plan)
-;;(delete-other-windows)
 (find-file "/home/derek/content/notes/journal.org")
 (org-agenda "/home/derek/content/notes/journal.org" "L")
